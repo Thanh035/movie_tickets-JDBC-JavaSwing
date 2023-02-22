@@ -23,7 +23,7 @@ public class BookingJframe extends javax.swing.JFrame {
 //    @Inject
     private IBookingDAO bookingDAO = new BookingDAO();
 //    @Inject
-    private ICustomerDAO customerDAO = new CustomerDAO();F
+//    private ICustomerDAO customerDAO = new CustomerDAO();F
 
     public BookingJframe() {
         initComponents();
