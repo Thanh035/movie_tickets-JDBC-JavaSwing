@@ -6,6 +6,7 @@ import com.aptech.movietickets.dao.impl.BookingDAO;
 import com.aptech.movietickets.dao.impl.CustomerDAO;
 import com.aptech.movietickets.model.BookingModel;
 import com.aptech.movietickets.model.CustomerModel;
+import com.aptech.movietickets.utils.EventsKey;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +27,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -41,7 +43,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
         txt_point = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_customer = new javax.swing.JTable();
-        btn_add = new java.awt.Button();
+        btn_save = new java.awt.Button();
         btn_delete = new java.awt.Button();
         btn_clear = new java.awt.Button();
 
@@ -90,6 +92,17 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Point:");
 
+        txt_point.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_pointActionPerformed(evt);
+            }
+        });
+        txt_point.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_pointKeyPressed(evt);
+            }
+        });
+
         tbl_customer.setBackground(new java.awt.Color(255, 153, 51));
         tbl_customer.setForeground(new java.awt.Color(253, 248, 221));
         tbl_customer.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,12 +131,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tbl_customer);
 
-        btn_add.setBackground(new java.awt.Color(0, 153, 153));
-        btn_add.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_add.setLabel("Save");
-        btn_add.addActionListener(new java.awt.event.ActionListener() {
+        btn_save.setBackground(new java.awt.Color(0, 153, 153));
+        btn_save.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_save.setLabel("Save");
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addActionPerformed(evt);
+                btn_saveActionPerformed(evt);
             }
         });
 
@@ -137,7 +150,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
             }
         });
 
-        btn_clear.setBackground(new java.awt.Color(204, 204, 0));
+        btn_clear.setBackground(new java.awt.Color(204, 255, 0));
         btn_clear.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btn_clear.setLabel("Clear");
         btn_clear.setName("Delete"); // NOI18N
@@ -169,11 +182,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
                                     .addComponent(txt_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_point, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
+                                .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(26, 26, 26))))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -205,7 +219,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
                                 .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(63, 63, 63)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
@@ -227,21 +241,26 @@ public class CustomerJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn2ActionPerformed
+    private void txt_pointKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pointKeyPressed
+        EventsKey.validateKeyPressed(evt, txt_point);
+    }//GEN-LAST:event_txt_pointKeyPressed
+
+    private void backBtn2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backBtn2ActionPerformed
         this.setVisible(false);
         HomeJframe home = new HomeJframe();
         home.setVisible(true);
-    }//GEN-LAST:event_backBtn2ActionPerformed
+    }// GEN-LAST:event_backBtn2ActionPerformed
 
-    private void tbl_customerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_customerMouseClicked
-        //        int position = TblSchedule.getSelectedRow();
-        //        showRow(position);
-    }//GEN-LAST:event_tbl_customerMouseClicked
+    private void tbl_customerMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbl_customerMouseClicked
+        int position = tbl_customer.getSelectedRow();
+        showRow(position);
+    }// GEN-LAST:event_tbl_customerMouseClicked
 
-    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_saveActionPerformed
         if (!Validate()) {
             return;
         }
+        currentIndex = tbl_customer.getSelectedRow();
         CustomerModel customer = new CustomerModel();
 
         String fullname = txt_fullname.getText();
@@ -253,7 +272,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
         customer.setPoint(point);
 
         if (currentIndex >= 0) {
-            customer = customers.get(currentIndex);
+            customer.setId(customers.get(currentIndex).getId());
             currentIndex = -1;
             customerDAO.update(customer);
             JOptionPane.showMessageDialog(rootPane, "Update customer successfully");
@@ -268,9 +287,9 @@ public class CustomerJFrame extends javax.swing.JFrame {
         customers = customerDAO.findAll();
         showCustomer();
         btn_clearActionPerformed(evt);
-    }//GEN-LAST:event_btn_addActionPerformed
+    }// GEN-LAST:event_btn_saveActionPerformed
 
-    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_deleteActionPerformed
         currentIndex = tbl_customer.getSelectedRow();
         if (currentIndex == -1) {
             JOptionPane.showMessageDialog(rootPane, "You haven't choose anything to delete");
@@ -287,24 +306,33 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "This customer is currently airing. Cannot delete!!");
             }
             currentIndex = -1;
-            customerDAO.findAll();
+            customers = customerDAO.findAll();
             showCustomer();
+            btn_clearActionPerformed(evt);
         }
         btn_clearActionPerformed(evt);
-    }//GEN-LAST:event_btn_deleteActionPerformed
+    }// GEN-LAST:event_btn_deleteActionPerformed
 
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_clearActionPerformed
         txt_fullname.setText("");
         txt_phone_number.setText("");
         txt_point.setText("");
         showCustomer();
-    }//GEN-LAST:event_btn_clearActionPerformed
+    }// GEN-LAST:event_btn_clearActionPerformed
+
+    private void txt_pointActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_pointActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_txt_pointActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -314,15 +342,19 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -334,9 +366,9 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn2;
-    private java.awt.Button btn_add;
     private java.awt.Button btn_clear;
     private java.awt.Button btn_delete;
+    private java.awt.Button btn_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -384,4 +416,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
         }
         return true;
     }
+
+    private void showRow(int position) {
+        CustomerModel customer = customers.get(position);
+        txt_fullname.setText(customer.getFullname());
+        txt_point.setText(String.valueOf(customer.getPoint()));
+        txt_phone_number.setText(customer.getPhone_number());
+    }
+    
 }

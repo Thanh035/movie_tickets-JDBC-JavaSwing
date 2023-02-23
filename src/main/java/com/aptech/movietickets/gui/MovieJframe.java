@@ -6,6 +6,7 @@ import com.aptech.movietickets.dao.impl.MovieDAO;
 import com.aptech.movietickets.dao.impl.ScheduleDAO;
 import com.aptech.movietickets.model.MovieModel;
 import com.aptech.movietickets.model.ScheduleModel;
+import com.aptech.movietickets.utils.EventsKey;
 import java.sql.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -27,33 +28,6 @@ public class MovieJframe extends javax.swing.JFrame {
         tableModel = (DefaultTableModel) tbl_movie.getModel();
 
         showMovie();
-//        tbl_movie.addMouseListener(new MouseListener() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int posion = tbl_movie.getSelectedRow();
-////                showRow(posion);
-//            }
-//
-//            @Override
-//            public void mousePressed(MouseEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//            }
-//
-//            @Override
-//            public void mouseReleased(MouseEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//            }
-//
-//            @Override
-//            public void mouseEntered(MouseEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//            }
-//
-//            @Override
-//            public void mouseExited(MouseEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//            }
-//        });
     }
 
     @SuppressWarnings("unchecked")
@@ -164,11 +138,6 @@ public class MovieJframe extends javax.swing.JFrame {
             }
         });
 
-        txt_duration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_durationActionPerformed(evt);
-            }
-        });
         txt_duration.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_durationKeyPressed(evt);
@@ -303,7 +272,7 @@ public class MovieJframe extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(357, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(218, 218, 218)
                 .addComponent(backBtn2)
@@ -339,6 +308,11 @@ public class MovieJframe extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_movie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_movieMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_movie);
         if (tbl_movie.getColumnModel().getColumnCount() > 0) {
             tbl_movie.getColumnModel().getColumn(6).setResizable(false);
@@ -349,10 +323,10 @@ public class MovieJframe extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 861, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(276, 276, 276)
+                .addGap(658, 658, 658)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -441,6 +415,8 @@ public class MovieJframe extends javax.swing.JFrame {
         if (!Validate()) {
             return;
         }
+        currentIndex = tbl_movie.getSelectedRow();
+
         MovieModel movie = new MovieModel();
 
         String title = txt_movie_name.getText();
@@ -458,7 +434,7 @@ public class MovieJframe extends javax.swing.JFrame {
         movie.setRelease(release);
 
         if (currentIndex >= 0) {
-            movie = movieList.get(currentIndex);
+            movie.setId(movieList.get(currentIndex).getId());
             currentIndex = -1;
             movieDAO.update(movie);
             JOptionPane.showMessageDialog(rootPane, "Update movie successfully");
@@ -479,8 +455,13 @@ public class MovieJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_durationActionPerformed
 
     private void txt_durationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_durationKeyPressed
-        validateKeyPressed(evt);
+        EventsKey.validateKeyPressed(evt, txt_duration);
     }//GEN-LAST:event_txt_durationKeyPressed
+
+    private void tbl_movieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_movieMouseClicked
+        int position = tbl_movie.getSelectedRow();
+        showRow(position);
+    }//GEN-LAST:event_tbl_movieMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -598,22 +579,14 @@ public class MovieJframe extends javax.swing.JFrame {
         return true;
     }
 
-    private void showRow(int posion) {
-        MovieModel model = new MovieModel();
-        model = movieList.get(posion);
+    private void showRow(int position) {
+        MovieModel model = movieList.get(position);
         txt_movie_name.setText(model.getTitle());
         txt_cast.setText(model.getCast());
         txt_director.setText(model.getDirector());
         txt_duration.setText(String.valueOf(model.getDuration()));
         txt_release.setDate(model.getRelease());
+        txt_genres.setSelectedItem(model.getGenres());
     }
 
-    private void validateKeyPressed(java.awt.event.KeyEvent evt) {
-        char c = evt.getKeyChar();
-        if (Character.isLetter(c)) {
-            txt_duration.setEditable(false);
-        } else {
-            txt_duration.setEditable(true);
-        }
-    }
 }

@@ -9,6 +9,7 @@ public class SeatMapper implements Rowmapper<SeatModel> {
     public SeatModel mapRow(ResultSet rs) {
         try {
             SeatModel seat = new SeatModel();
+            seat.setId(rs.getInt("id"));
             seat.setRow(rs.getString("seat_row"));
             seat.setColumn(rs.getString("seat_column"));
             seat.setType(rs.getString("type"));
