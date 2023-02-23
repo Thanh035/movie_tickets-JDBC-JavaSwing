@@ -8,7 +8,7 @@ public interface ISeatDAO {
 
     List<SeatModel> findAll();
 
-    void save(SeatModel seatModel);
+    int save(SeatModel seatModel);
 
     void update(SeatModel updateSeat);
 

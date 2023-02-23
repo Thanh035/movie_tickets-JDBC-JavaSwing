@@ -13,9 +13,9 @@ public class SeatDAO extends BaseDAO<SeatModel> implements ISeatDAO {
         return query(sql, new SeatMapper());
     }
 
-    public void save(SeatModel seatModel) {
+    public int save(SeatModel seatModel) {
         String sql = "INSERT INTO seat (seat_row,seat_column,type,seat_code) VALUES (?, ?, ?, ?)";
-        insert(sql,
+        return insert(sql,
                 seatModel.getRow(),
                 seatModel.getColumn(),
                 seatModel.getType(),

@@ -8,29 +8,25 @@ import com.aptech.movietickets.dao.impl.BookingDAO;
 import com.aptech.movietickets.dao.impl.CustomerDAO;
 import com.aptech.movietickets.dao.impl.MovieDAO;
 import com.aptech.movietickets.dao.impl.ScheduleDAO;
-import com.aptech.movietickets.model.CustomerModel;
 import com.aptech.movietickets.model.MovieModel;
 import com.aptech.movietickets.model.ScheduleModel;
 import java.util.List;
-import javax.inject.Inject;
 
 public class BookingJframe extends javax.swing.JFrame {
 
-    // @Inject
     private IScheduleDAO scheduleDAO = new ScheduleDAO();
-    // @Inject
     private IMovieDAO movieDAO = new MovieDAO();
-    // @Inject
     private IBookingDAO bookingDAO = new BookingDAO();
-    // @Inject
-    // private ICustomerDAO customerDAO = new CustomerDAO();F
+    private ICustomerDAO customerDAO = new CustomerDAO();
 
     public BookingJframe() {
         initComponents();
-        // showComboBox();
+        this.setLocationRelativeTo(null);
+        showComboBox();
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,11 +70,11 @@ public class BookingJframe extends javax.swing.JFrame {
 
         btn_add.setBackground(new java.awt.Color(0, 153, 153));
         btn_add.setForeground(new java.awt.Color(253, 248, 221));
-        btn_add.setLabel("Add");
+        btn_add.setLabel("Save");
 
         btn_reset.setBackground(new java.awt.Color(228, 31, 37));
         btn_reset.setForeground(new java.awt.Color(253, 248, 221));
-        btn_reset.setLabel("Reset");
+        btn_reset.setLabel("Clear");
 
         jLabel7.setText("Room ");
 
@@ -106,18 +102,6 @@ public class BookingJframe extends javax.swing.JFrame {
             }
         });
 
-        txt_vip_ticket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_vip_ticketActionPerformed(evt);
-            }
-        });
-
-        txt_schedule_end.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_schedule_endActionPerformed(evt);
-            }
-        });
-
         tbl_movie.setBackground(new java.awt.Color(255, 215, 65));
         tbl_movie.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][] {
@@ -135,11 +119,6 @@ public class BookingJframe extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
-            }
-        });
-        tbl_movie.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_movieMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(tbl_movie);
@@ -359,11 +338,11 @@ public class BookingJframe extends javax.swing.JFrame {
     }// GEN-LAST:event_txt_schedule_startActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_addActionPerformed
-        String fullname = txt_fullname.getText().toString();
-        String phone_number = txt_phone_number.getText().toString();
-        CustomerModel customerModel = new CustomerModel();
-        customerModel.setFullname(fullname);
-        customerModel.setPhone_number(phone_number);
+        // String fullname = txt_fullname.getText().toString();
+        // String phone_number = txt_phone_number.getText().toString();
+        // CustomerModel customerModel = new CustomerModel();
+        // customerModel.setFullname(fullname);
+        // customerModel.setPhone_number(phone_number);
 
         // int customer_id = customerDAO.save(customerModel);
         // int schedule_id = txt_schedule_name.getSelectedIndex();
@@ -384,15 +363,6 @@ public class BookingJframe extends javax.swing.JFrame {
     }// GEN-LAST:event_txt_seatcodeActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel.
-         * For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -453,15 +423,11 @@ public class BookingJframe extends javax.swing.JFrame {
         List<ScheduleModel> schedules = scheduleDAO.findAll();
         for (ScheduleModel schedule : schedules) {
             MovieModel model = movieDAO.findOne(schedule.getId());
-            txt_schedule_name.insertItemAt(model.getTitle() + " - " + schedule.getSchedule_start(), schedule.getId());
+            // txt_schedule_name.insertItemAt(model.getTitle() + " - " +
+            // schedule.getSchedule_start(), schedule.getId());
             // txt_schedule_name.addItem(schedule.getName() + "(" + model.getName() + ") - "
             // + schedule.getId());
         }
     }
 
-    private void resetForm() {
-        txt_fullname.setText("");
-        txt_phone_number.setText("");
-        txt_schedule_name.setSelectedItem("Select");
-    }
 }
