@@ -28,7 +28,11 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE160</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

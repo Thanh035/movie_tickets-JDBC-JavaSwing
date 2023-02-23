@@ -41,11 +41,12 @@ public class HomeJframe extends javax.swing.JFrame {
         setBackground(new java.awt.Color(253, 252, 240));
 
         jPanel2.setBackground(new java.awt.Color(253, 248, 221));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CustomerButton.setBackground(new java.awt.Color(255, 153, 51));
         CustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         CustomerButton.setForeground(new java.awt.Color(253, 248, 221));
-        CustomerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/CustomerIcon.png"))); // NOI18N
+        CustomerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CustomerIcon.png"))); // NOI18N
         CustomerButton.setText("Customer");
         CustomerButton.setBorder(null);
         CustomerButton.setBorderPainted(false);
@@ -55,11 +56,12 @@ public class HomeJframe extends javax.swing.JFrame {
                 CustomerButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(CustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(781, 202, 226, 106));
 
         MovieButton.setBackground(new java.awt.Color(0, 102, 204));
         MovieButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         MovieButton.setForeground(new java.awt.Color(253, 248, 221));
-        MovieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/MovieIcon.png"))); // NOI18N
+        MovieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MovieIcon.png"))); // NOI18N
         MovieButton.setText("Movie");
         MovieButton.setBorder(null);
         MovieButton.setBorderPainted(false);
@@ -69,11 +71,12 @@ public class HomeJframe extends javax.swing.JFrame {
                 MovieButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(MovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 202, 226, 106));
 
         ScheduleButton.setBackground(new java.awt.Color(0, 153, 153));
         ScheduleButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         ScheduleButton.setForeground(new java.awt.Color(253, 248, 221));
-        ScheduleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/ScheduleIcon.png"))); // NOI18N
+        ScheduleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ScheduleIcon.png"))); // NOI18N
         ScheduleButton.setText("Schedule");
         ScheduleButton.setBorder(null);
         ScheduleButton.setBorderPainted(false);
@@ -83,11 +86,12 @@ public class HomeJframe extends javax.swing.JFrame {
                 ScheduleButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(ScheduleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 435, 226, 106));
 
         BookingButton.setBackground(new java.awt.Color(255, 215, 65));
         BookingButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         BookingButton.setForeground(new java.awt.Color(253, 248, 221));
-        BookingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/BookingIcon.png"))); // NOI18N
+        BookingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BookingIcon.png"))); // NOI18N
         BookingButton.setText("Booking");
         BookingButton.setBorder(null);
         BookingButton.setBorderPainted(false);
@@ -97,11 +101,12 @@ public class HomeJframe extends javax.swing.JFrame {
                 BookingButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(BookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 435, 226, 106));
 
         LogoutButton.setBackground(new java.awt.Color(228, 31, 37));
         LogoutButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         LogoutButton.setForeground(new java.awt.Color(253, 248, 221));
-        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/LogoutIcon.png"))); // NOI18N
+        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoutIcon.png"))); // NOI18N
         LogoutButton.setText("Log out");
         LogoutButton.setBorder(null);
         LogoutButton.setBorderPainted(false);
@@ -111,36 +116,24 @@ public class HomeJframe extends javax.swing.JFrame {
                 LogoutButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(781, 436, 226, 106));
 
         jPanel1.setBackground(new java.awt.Color(228, 31, 37));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 248, 221));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/TicketIcon.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TicketIcon.png"))); // NOI18N
         jLabel1.setText("Movie System Management");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, 86));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(265, 265, 265))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1117, 124));
 
         RoomButton.setBackground(new java.awt.Color(66, 62, 61));
         RoomButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         RoomButton.setForeground(new java.awt.Color(253, 248, 221));
-        RoomButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/aptech/movietickets/icons/MovieRoomIcon.png"))); // NOI18N
+        RoomButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MovieRoomIcon.png"))); // NOI18N
         RoomButton.setText("Room");
         RoomButton.setBorder(null);
         RoomButton.setBorderPainted(false);
@@ -150,43 +143,7 @@ public class HomeJframe extends javax.swing.JFrame {
                 RoomButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ScheduleButton, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                    .addComponent(MovieButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(110, 110, 110)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MovieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(127, 127, 127)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93))
-        );
+        jPanel2.add(RoomButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 202, 226, 106));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,7 +155,7 @@ public class HomeJframe extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
         );
 
         pack();

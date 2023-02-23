@@ -28,55 +28,60 @@ public class BookingJframe extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btn_add = new java.awt.Button();
         btn_reset = new java.awt.Button();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_room_name = new javax.swing.JComboBox<>();
         txt_movie_name = new javax.swing.JComboBox<>();
         txt_normal_ticket = new javax.swing.JTextField();
-        txt_schedule_start = new javax.swing.JTextField();
         txt_vip_ticket = new javax.swing.JTextField();
         txt_schedule_end = new javax.swing.JTextField();
-        releaseDateTtx = new com.toedter.calendar.JDateChooser();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_movie = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         backBtn2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txt_room_name1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(253, 248, 221));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Movie name");
+        jLabel3.setText("Full name:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 85, 35));
 
-        jLabel3.setText("Normal ticket");
+        jLabel4.setText("Price:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 85, 35));
 
-        jLabel4.setText("Schedule end");
+        jLabel5.setText("Movie:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 85, 35));
 
-        jLabel5.setText("Schedule date");
-
-        jLabel6.setText("Schedule start");
+        jLabel6.setText("Room");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 85, 35));
 
         btn_add.setBackground(new java.awt.Color(0, 153, 153));
         btn_add.setForeground(new java.awt.Color(253, 248, 221));
-        btn_add.setLabel("Add");
+        btn_add.setLabel("Save");
+        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 65, 32));
 
         btn_reset.setBackground(new java.awt.Color(228, 31, 37));
         btn_reset.setForeground(new java.awt.Color(253, 248, 221));
-        btn_reset.setLabel("Reset");
+        btn_reset.setLabel("Delete");
+        jPanel1.add(btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 64, 32));
 
-        jLabel7.setText("Room ");
-
-        jLabel8.setText("Vip ticket");
+        jLabel8.setText("Phone number:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 85, 35));
 
         txt_room_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Room 1", "Room 2", "Room 3", "Room 4" }));
+        jPanel1.add(txt_room_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 103, -1));
 
         txt_movie_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         txt_movie_name.addActionListener(new java.awt.event.ActionListener() {
@@ -84,45 +89,43 @@ public class BookingJframe extends javax.swing.JFrame {
                 txt_movie_nameActionPerformed(evt);
             }
         });
+        jPanel1.add(txt_movie_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 103, -1));
 
         txt_normal_ticket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_normal_ticketActionPerformed(evt);
             }
         });
-
-        txt_schedule_start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_schedule_startActionPerformed(evt);
-            }
-        });
+        jPanel1.add(txt_normal_ticket, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 291, -1));
 
         txt_vip_ticket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // txt_vip_ticketActionPerformed(evt);
+                txt_vip_ticketActionPerformed(evt);
             }
         });
+        jPanel1.add(txt_vip_ticket, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 291, -1));
 
         txt_schedule_end.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_schedule_endActionPerformed(evt);
             }
         });
+        jPanel1.add(txt_schedule_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 291, -1));
 
         tbl_movie.setBackground(new java.awt.Color(255, 215, 65));
         tbl_movie.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Room", "VipTicket", "NormalTicket", "ScheduleDate", "ScheduleStart", "ScheduleEnd"
+                "No", " Full name", "Phone number", "Movie", "Room", "Seat", "Start time", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -136,11 +139,15 @@ public class BookingJframe extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tbl_movie);
 
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 450, 405));
+
         jPanel2.setBackground(new java.awt.Color(255, 215, 65));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 248, 221));
         jLabel1.setText("Booking Page");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 33, -1, -1));
 
         backBtn2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         backBtn2.setText("Back");
@@ -149,103 +156,24 @@ public class BookingJframe extends javax.swing.JFrame {
                 backBtn2ActionPerformed(evt);
             }
         });
+        jPanel2.add(backBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 28, -1, 44));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(270, 270, 270)
-                .addComponent(backBtn2)
-                .addGap(38, 38, 38))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(backBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 924, 90));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)
-                                .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_movie_name, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_room_name, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_normal_ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_vip_ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(releaseDateTtx, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_schedule_start, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_schedule_end, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_movie_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_room_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_normal_ticket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_vip_ticket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(releaseDateTtx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_schedule_start, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_schedule_end, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 20, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(34, 34, 34))
-        );
+        jLabel9.setText("Start time:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 85, 35));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 291, -1));
+
+        jLabel7.setText("Seat");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 85, 35));
+
+        txt_room_name1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Room 1", "Room 2", "Room 3", "Room 4" }));
+        txt_room_name1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_room_name1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_room_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 103, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,9 +183,7 @@ public class BookingJframe extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
         pack();
@@ -270,10 +196,6 @@ public class BookingJframe extends javax.swing.JFrame {
     private void txt_normal_ticketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_normal_ticketActionPerformed
 
     }//GEN-LAST:event_txt_normal_ticketActionPerformed
-
-    private void txt_schedule_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_schedule_startActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_schedule_startActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
 //        String fullname = txt_fullname.getText().toString();
@@ -299,6 +221,10 @@ public class BookingJframe extends javax.swing.JFrame {
     private void txt_seatcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_seatcodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_seatcodeActionPerformed
+
+    private void txt_room_name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_room_name1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_room_name1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -338,23 +264,23 @@ public class BookingJframe extends javax.swing.JFrame {
     private java.awt.Button btn_add;
     private java.awt.Button btn_reset;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
-    private com.toedter.calendar.JDateChooser releaseDateTtx;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbl_movie;
     private javax.swing.JComboBox<String> txt_movie_name;
     private javax.swing.JTextField txt_normal_ticket;
     private javax.swing.JComboBox<String> txt_room_name;
+    private javax.swing.JComboBox<String> txt_room_name1;
     private javax.swing.JTextField txt_schedule_end;
-    private javax.swing.JTextField txt_schedule_start;
     private javax.swing.JTextField txt_vip_ticket;
     // End of variables declaration//GEN-END:variables
 
