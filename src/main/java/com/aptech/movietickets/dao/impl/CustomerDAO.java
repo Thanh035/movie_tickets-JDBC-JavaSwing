@@ -34,7 +34,7 @@ public class CustomerDAO extends BaseDAO<CustomerModel> implements ICustomerDAO 
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM `customer` WHERE id = ?";
+        String sql = "DELETE customer WHERE id = ?";
         update(sql, id);
     }
 
