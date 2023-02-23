@@ -16,5 +16,7 @@ public interface IMovieDAO {
     void delete(int id);
 
     MovieModel findByTitle(String title);
+    
+    int getTotalItem();
 
 }

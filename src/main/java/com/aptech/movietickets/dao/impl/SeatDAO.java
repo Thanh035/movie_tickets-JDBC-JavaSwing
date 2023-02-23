@@ -23,12 +23,13 @@ public class SeatDAO extends BaseDAO<SeatModel> implements ISeatDAO {
     }
 
     public void update(SeatModel updateSeat) {
-        String sql = "UPDATE seat SET row,column,type,code WHERE id = ?";
+        String sql = "UPDATE `seat` SET `seat_row`=?,`seat_column`=?,`type`=?,`seat_code`=? WHERE id = ?";
         update(sql,
                 updateSeat.getRow(),
                 updateSeat.getColumn(),
                 updateSeat.getType(),
-                updateSeat.getCode());
+                updateSeat.getCode(),
+                updateSeat.getId());
     }
 
     @Override

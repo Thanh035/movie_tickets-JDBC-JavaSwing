@@ -155,4 +155,24 @@ public class BaseDAO<T> implements GenericDAO<T> {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public int count(String sql, Object... parameters) {
+        try {
+            int count = 0;
+            connection = getConnection();
+            statement = connection.prepareStatement(sql);
+            setParameter(statement, parameters);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+            return count;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return 0;
+        } finally {
+            closeConnection();
+        }
+    }
 }

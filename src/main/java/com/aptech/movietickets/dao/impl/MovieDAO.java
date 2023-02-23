@@ -35,7 +35,7 @@ public class MovieDAO extends BaseDAO<MovieModel> implements IMovieDAO {
 
     @Override
     public void update(MovieModel updateMovie) {
-        String sql = "UPDATE `movie` SET `genres`= ?,`release`= ?,`duration`= ?,`cast`= ?',`director`= ?,`title`= ? WHERE id = ?";
+        String sql = "UPDATE `movie` SET `genres`= ?,`release`= ?,`duration`= ?,`cast`= ?,`director`= ?,`title`= ? WHERE id = ?";
         update(sql,
                 updateMovie.getGenres(),
                 updateMovie.getRelease(),
@@ -57,6 +57,12 @@ public class MovieDAO extends BaseDAO<MovieModel> implements IMovieDAO {
         String sql = "SELECT * FROM movie WHERE title = ?";
         List<MovieModel> movies = query(sql, new MovieMapper(), title);
         return movies.isEmpty() ? null : movies.get(0);
+    }
+
+    @Override
+    public int getTotalItem() {
+        String sql = "SELECT count(*) FROM movie";
+        return count(sql);
     }
 
 }

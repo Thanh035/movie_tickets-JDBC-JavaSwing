@@ -7,7 +7,6 @@ import com.aptech.movietickets.dao.impl.BookingDAO;
 import com.aptech.movietickets.dao.impl.RoomDAO;
 import com.aptech.movietickets.dao.impl.SeatDAO;
 import com.aptech.movietickets.model.BookingModel;
-import com.aptech.movietickets.model.RoomModel;
 import com.aptech.movietickets.model.SeatModel;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,36 +19,27 @@ public class RoomJframe extends javax.swing.JFrame {
     private IBookingDAO bookingDAO = new BookingDAO();
 
     DefaultTableModel seatModel;
-    DefaultTableModel roomModel;
 
     int currentIndex = -1;
-    List<RoomModel> roomList;
     List<SeatModel> seatList;
 
     public RoomJframe() {
         initComponents();
         this.setLocationRelativeTo(null);
         seatModel = (DefaultTableModel) tbl_seat.getModel();
-//        roomModel = (DefaultTableModel) tb.getModel();
 
-        showRoom();
         showSeat();
     }
 
-    private void resetForm() {
-        txt_seat_column.setSelectedIndex(1);
-        txt_seat_row.setSelectedIndex(1);
-        txt_seat_type.setSelectedIndex(1);
-    }
-
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         label4 = new java.awt.Label();
-        btn_add = new java.awt.Button();
+        Save = new java.awt.Button();
         label5 = new java.awt.Label();
         txt_seat_type = new javax.swing.JComboBox<>();
         txt_seat_row = new javax.swing.JComboBox<>();
@@ -73,12 +63,12 @@ public class RoomJframe extends javax.swing.JFrame {
         label4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         label4.setText("Seat column (number)");
 
-        btn_add.setBackground(new java.awt.Color(0, 153, 153));
-        btn_add.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_add.setLabel("Save");
-        btn_add.addActionListener(new java.awt.event.ActionListener() {
+        Save.setBackground(new java.awt.Color(0, 153, 153));
+        Save.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        Save.setLabel("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addActionPerformed(evt);
+                SaveActionPerformed(evt);
             }
         });
 
@@ -86,6 +76,7 @@ public class RoomJframe extends javax.swing.JFrame {
         label5.setText("Seat type");
 
         txt_seat_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Vip" }));
+        txt_seat_type.setSelectedIndex(1);
         txt_seat_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_seat_typeActionPerformed(evt);
@@ -93,6 +84,7 @@ public class RoomJframe extends javax.swing.JFrame {
         });
 
         txt_seat_row.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "A", "B", "C", "D", "E", "F", "G" }));
+        txt_seat_row.setSelectedIndex(1);
         txt_seat_row.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_seat_rowActionPerformed(evt);
@@ -100,6 +92,7 @@ public class RoomJframe extends javax.swing.JFrame {
         });
 
         txt_seat_column.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        txt_seat_column.setSelectedIndex(1);
         txt_seat_column.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_seat_columnActionPerformed(evt);
@@ -110,17 +103,17 @@ public class RoomJframe extends javax.swing.JFrame {
         tbl_seat.setForeground(new java.awt.Color(253, 248, 221));
         tbl_seat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "No", "Seat Row", "Seat Column", "Seat type", "Seat code"
+                "No", "Seat Row", "Seat Column", "Seat type"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -180,10 +173,10 @@ public class RoomJframe extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        btn_clear.setBackground(new java.awt.Color(204, 255, 0));
+        btn_clear.setBackground(new java.awt.Color(255, 255, 51));
         btn_clear.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btn_clear.setLabel("Clear");
-        btn_clear.setName("reset"); // NOI18N
+        btn_clear.setName("Clear"); // NOI18N
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_clearActionPerformed(evt);
@@ -196,8 +189,10 @@ public class RoomJframe extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 22, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,13 +203,13 @@ public class RoomJframe extends javax.swing.JFrame {
                             .addComponent(txt_seat_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_seat_column, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_seat_row, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(204, 204, 204)
-                        .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGap(258, 258, 258)
+                        .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -235,7 +230,7 @@ public class RoomJframe extends javax.swing.JFrame {
                                 .addComponent(txt_seat_row, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_seat_column, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -259,20 +254,25 @@ public class RoomJframe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SaveActionPerformed
+        if(!Validate()) {
+            return;
+        }
+        currentIndex = tbl_seat.getSelectedRow();
+
         String seat_row = txt_seat_row.getSelectedItem().toString();
-        int seat_column = Integer.parseInt(txt_seat_column.getSelectedItem().toString());
-        String seat_type = (String) this.txt_seat_type.getSelectedItem();
+        String seat_column = txt_seat_column.getSelectedItem().toString();
+        String seat_type = txt_seat_type.getSelectedItem().toString();
         String seat_code = seat_row + seat_column;
 
         SeatModel seat = new SeatModel();
         seat.setRow(seat_row);
-        seat.setColumn(seat_row);
+        seat.setColumn(seat_column);
         seat.setType(seat_type);
         seat.setCode(seat_code);
 
         if (currentIndex >= 0) {
-            seat = seatList.get(currentIndex);
+            seat.setId(seatList.get(currentIndex).getId());
             currentIndex = -1;
             seatDAO.update(seat);
         } else {
@@ -285,26 +285,26 @@ public class RoomJframe extends javax.swing.JFrame {
         seatList = seatDAO.findAll();
         showSeat();
         btn_clearActionPerformed(evt);
-    }//GEN-LAST:event_btn_addActionPerformed
+    }// GEN-LAST:event_SaveActionPerformed
 
-    private void txt_seat_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_seat_typeActionPerformed
-    }//GEN-LAST:event_txt_seat_typeActionPerformed
+    private void txt_seat_typeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_seat_typeActionPerformed
+    }// GEN-LAST:event_txt_seat_typeActionPerformed
 
-    private void txt_seat_rowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_seat_rowActionPerformed
+    private void txt_seat_rowActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_seat_rowActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_seat_rowActionPerformed
+    }// GEN-LAST:event_txt_seat_rowActionPerformed
 
-    private void txt_seat_columnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_seat_columnActionPerformed
+    private void txt_seat_columnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_seat_columnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_seat_columnActionPerformed
+    }// GEN-LAST:event_txt_seat_columnActionPerformed
 
-    private void backBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn2ActionPerformed
+    private void backBtn2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backBtn2ActionPerformed
         this.setVisible(false);
         HomeJframe home = new HomeJframe();
         home.setVisible(true);
-    }//GEN-LAST:event_backBtn2ActionPerformed
+    }// GEN-LAST:event_backBtn2ActionPerformed
 
-    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_deleteActionPerformed
         currentIndex = tbl_seat.getSelectedRow();
         if (currentIndex == -1) {
             JOptionPane.showMessageDialog(rootPane, "You haven't choose anything to delete");
@@ -317,6 +317,7 @@ public class RoomJframe extends javax.swing.JFrame {
 
             if (bookingModel == null) {
                 seatDAO.delete(seatList.get(currentIndex).getId());
+                System.out.println("ID:" + seatList.get(currentIndex).getId());
             } else {
                 JOptionPane.showMessageDialog(rootPane, "This customer is currently airing. Cannot delete!!");
             }
@@ -325,18 +326,19 @@ public class RoomJframe extends javax.swing.JFrame {
             showSeat();
         }
         btn_clearActionPerformed(evt);
-    }//GEN-LAST:event_btn_deleteActionPerformed
+    }// GEN-LAST:event_btn_deleteActionPerformed
 
-    private void tbl_seatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_seatMouseClicked
-        //        int position = TblSchedule.getSelectedRow();
-        //        showRow(position);
-    }//GEN-LAST:event_tbl_seatMouseClicked
+    private void tbl_seatMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbl_seatMouseClicked
+        int position = tbl_seat.getSelectedRow();
+        showRow(position);
+    }// GEN-LAST:event_tbl_seatMouseClicked
 
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        txt_seat_column.setSelectedIndex(1);
-        txt_seat_row.setSelectedIndex(1);
-        txt_seat_type.setSelectedIndex(1);
-    }//GEN-LAST:event_btn_clearActionPerformed
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_clearActionPerformed
+        txt_seat_column.setSelectedItem("Select");
+        txt_seat_row.setSelectedItem("Select");
+        txt_seat_type.setSelectedItem("Normal");
+        showSeat();
+    }
 
     public static void main(String args[]) {
 
@@ -348,15 +350,19 @@ public class RoomJframe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomJframe.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -367,8 +373,8 @@ public class RoomJframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button Save;
     private javax.swing.JButton backBtn2;
-    private java.awt.Button btn_add;
     private java.awt.Button btn_clear;
     private java.awt.Button btn_delete;
     private javax.swing.JLabel jLabel1;
@@ -389,26 +395,41 @@ public class RoomJframe extends javax.swing.JFrame {
 
         seatModel.setRowCount(0);
 
-        for (SeatModel seat : seatList) {
-            seatModel.addRow(new Object[]{
-                seat.getId(),
-                seat.getRow(),
-                seat.getColumn(),
-                seat.getType(),
-                seat.getCode()
-            });
+        if (!seatList.isEmpty()) {
+            for (SeatModel seat : seatList) {
+                seatModel.addRow(new Object[]{
+                    seat.getCode(),
+                    seat.getRow(),
+                    seat.getColumn(),
+                    seat.getType()});
+            }
         }
     }
 
-    private void showRoom() {
-        roomList = roomDAO.findAll();
-
-        seatModel.setRowCount(0);
-
-        if (roomList.isEmpty()) {
-            for (RoomModel room : roomList) {
-                roomModel.addRow(new Object[]{});
+    private void showRow(int position) {
+        SeatModel seat = seatList.get(position);
+        txt_seat_column.setSelectedItem(seat.getColumn());
+        txt_seat_row.setSelectedItem(seat.getRow());
+        txt_seat_type.setSelectedItem(seat.getType());
+    }
+    
+     private boolean Validate() {
+        try {
+            if (txt_seat_column.getSelectedItem().toString().equalsIgnoreCase("Select")) {
+                JOptionPane.showMessageDialog(null, "Invalid seat's column");
+                return false;
             }
+            if (txt_seat_row.getSelectedItem().toString().equalsIgnoreCase("Select")) {
+                JOptionPane.showMessageDialog(null, "Invalid seat's row");
+                return false;
+            }
+            if (txt_seat_type.getSelectedItem().toString().equalsIgnoreCase("Select")) {
+                JOptionPane.showMessageDialog(null, "Invalid seat's type");
+                return false;
+            }
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
         }
+        return true;
     }
 }

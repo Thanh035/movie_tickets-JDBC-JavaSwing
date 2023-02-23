@@ -24,7 +24,7 @@ public class CustomerDAO extends BaseDAO<CustomerModel> implements ICustomerDAO 
 
     @Override
     public void update(CustomerModel updateCustomer) {
-        String sql = "UPDATE customer SET fullname = ?, phone_number = ?, point = ? WHERE id = ?";
+        String sql = "UPDATE `customer` SET fullname = ?, phone_number = ?, point = ? WHERE id = ?";
         update(sql,
                 updateCustomer.getFullname(),
                 updateCustomer.getPhone_number(),
